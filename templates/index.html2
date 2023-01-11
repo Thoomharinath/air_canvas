@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript"
+    src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+
+    <script>
+        function myFunction() {
+        var c = document.getElementById('the_canvas_element_id');
+            
+      //  const screenshotTarget = document.body;
+
+html2canvas(c).then((canvas) => {
+    const base64image = canvas.toDataURL("image/png");
+    let data = new Blob([base64image],{ type: 'application/image' })
+    console.log(data,"chekcing")
+   data=  URL.createObjectURL(data);
+    console.log(data,"checking 123")
+  //  window.open(data)
+ //   window.location.href = data;
+
+});
+        
+   
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+ }
+        
+        
+    </script>
+<style>
+h1 {
+  color:white;
+  text-align: center;
+}
+body {
+  background-image: url('https://miro.medium.com/max/4800/1*m2gDBT_nc-iE7R4AM3sHBQ.webp');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+    /* padding:5px; */
+}
+.white-board{
+    background-color: white;
+    translate:0.5%;
+    background-size: cover;
+    width:98vw;    
+    height:60vh;
+}
+
+.bottom-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    height:10vh;
+}
+
+.screenshot-btn{
+    background-color: green;
+    color:white;
+    padding:15px;
+    width:13%;
+    font-size: 16px;
+    border: 0px;
+    /* border:2px solid pink; */
+    font-weight: bold;
+    /* box-shadow: 0px 0px 19px 14px; */
+    box-shadow: 0px 0px 27px 6px;
+    cursor: pointer;
+    border-radius: 5px;
+   
+    
+}
+
+.screenshot-btn:hover{
+        background-color:#12bdb2;
+    }
+
+.clear-btn{
+    background-color: green;
+    color:white;
+    padding:15px;
+    width:13%;
+    font-size: 16px;
+    border: 0px;
+    /* border:2px solid pink; */
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    /* box-shadow: 0px 0px 19px 14px; */
+    box-shadow: 0px 0px 27px 6px;
+    
+}
+.clear-btn:hover{
+    background-color: orange;
+}
+</style>
+</head>
+
+  <body>
+   
+    <h1 id="demo">Live streaming</h1>    
+      
+    <div>        
+        <!-- <img src="{{ url_for('video') }}" width="50%"/> -->
+        <div class="white-board" ></div>
+    </div>
+    <div id="the_canvas_element_id" class="bottom-container" >
+        <button class="screenshot-btn" onClick="myFunction()">Take Screenshot</button>
+        <button class="clear-btn">Clear</button>
+    </div>
+    </body>
+
+
+</html>
